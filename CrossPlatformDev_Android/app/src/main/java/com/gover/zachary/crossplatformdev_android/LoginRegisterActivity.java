@@ -9,13 +9,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.gover.zachary.crossplatformdev_android.fragments.LoginRegisterFragment;
-import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterAuthListener;
+import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterAuthListeners;
 import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterBtnListeners;
 import com.gover.zachary.crossplatformdev_android.models.AppUtils;
 import com.gover.zachary.crossplatformdev_android.models.FirebaseManager;
 
 public class LoginRegisterActivity extends AppCompatActivity implements LoginRegisterBtnListeners,
-																		LoginRegisterAuthListener {
+																		LoginRegisterAuthListeners {
 
 	private static final String TAG = "LoginRegisterActivity";
 

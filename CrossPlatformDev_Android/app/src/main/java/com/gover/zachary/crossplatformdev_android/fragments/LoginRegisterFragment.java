@@ -68,20 +68,20 @@ public class LoginRegisterFragment extends Fragment {
 		// Get current values and make sure they are not empty
 		String email = emailField.getText().toString().trim();
 		String pw = pwField.getText().toString().trim();
-		boolean isValid = false;
+		boolean isValid = true;
 
 		if (email.isEmpty()) {
 			emailField.setError("Please enter a valid email");
+			isValid = false;
 		} else {
 			emailField.setError(null);
-			isValid = true;
 		}
 
 		if (pw.isEmpty()) {
 			pwField.setError("Please enter a valid password");
+			isValid = false;
 		} else {
 			pwField.setError(null);
-			isValid = true;
 		}
 
 		return isValid;

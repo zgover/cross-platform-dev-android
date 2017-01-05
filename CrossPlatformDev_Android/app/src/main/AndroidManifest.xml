@@ -28,6 +28,9 @@
 		<activity android:name=".TaskListActivity">
 		</activity>
 
+		<activity android:name=".CreateTaskActivity">
+		</activity>
+
 	</application>
 
 </manifest>

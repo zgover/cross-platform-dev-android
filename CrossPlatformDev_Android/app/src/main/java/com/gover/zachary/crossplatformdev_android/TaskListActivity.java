@@ -93,7 +93,8 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 			.replace(R.id.Content, frag, TAG).commit();
 	}
 
-	private static void addNewTask() {
-
+	private void addNewTask() {
+		Intent intent = new Intent(this, CreateTaskActivity.class);
+		startActivityForResult(intent, CREATE_TASK);
 	}
 }

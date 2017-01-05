@@ -1,6 +1,7 @@
 <resources>
 	<!-- Global -->
 	<string name="app_name">Cross Platform Dev</string>
+	<string name="save">Save</string>
 
 	<!-- LoginRegisterActivity -->
 	<string name="email_hint">Email</string>
@@ -14,4 +15,8 @@
 	<string name="task_name">Task Name</string>
 	<string name="task_amount">Task Amount</string>
 	<string name="task_created_date">11/11</string>
+
+	<!-- CreateTaskActivity -->
+	<string name="task_created_date_lbl">Created Date</string>
+
 </resources>

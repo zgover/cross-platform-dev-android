@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,7 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.gover.zachary.crossplatformdev_android.LoginRegisterActivity;
-import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterAuthListener;
+import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterAuthListeners;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FirebaseManager {
 
@@ -87,19 +92,44 @@ public class FirebaseManager {
 		activity.finish();
 	}
 
+	public static void createNewTask(com.gover.zachary.crossplatformdev_android.models.Task task,
+									 OnFailureListener onFail, OnSuccessListener onSuccess) {
+		// Push to get a new key and set the property names
+		String key = getFbDbReference()
+			.child(getUserId())
+			.child(com.gover.zachary.crossplatformdev_android.models.Task.OBJECT_NAME)
+			.push().getKey();
+
+		Map<String, Object> childUpdates = new HashMap<>();
+		String location = "/" +
+						  getUserId() + "/" +
+						  com.gover.zachary.crossplatformdev_android.models.Task.OBJECT_NAME + "/" +
+						  key;
+
+		childUpdates.put(location + "/name", task.getName());
+		childUpdates.put(location + "/amount", task.getAmount());
+		childUpdates.put(location + "/createDate", task.getCreatedDate());
+
+		// Update the children of the reference
+		getFbDbReference()
+			.updateChildren(childUpdates)
+			.addOnFailureListener(onFail)
+			.addOnSuccessListener(onSuccess);
+	}
+
 	public static AuthCompleteListener getAuthCompleteListener(@NonNull Context context) {
 		return new AuthCompleteListener(context);
 	}
 
-	public static FirebaseAuthListener getFirebaseAuthListener(@NonNull LoginRegisterAuthListener listener) {
+	public static FirebaseAuthListener getFirebaseAuthListener(@NonNull LoginRegisterAuthListeners listener) {
 		return new FirebaseAuthListener(listener);
 	}
 
 	private static class FirebaseAuthListener implements FirebaseAuth.AuthStateListener {
 
-		private LoginRegisterAuthListener listener;
+		private LoginRegisterAuthListeners listener;
 
-		public FirebaseAuthListener(LoginRegisterAuthListener listener) {
+		public FirebaseAuthListener(LoginRegisterAuthListeners listener) {
 			this.listener = listener;
 		}
 
