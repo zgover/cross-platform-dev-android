@@ -50,14 +50,14 @@ public class LoginRegisterActivity extends AppCompatActivity implements LoginReg
 	public void loginBtnClicked(String email, String password) {
 		// Login to firebase with creds
 		AppUtils.showProgress(this, "Please wait", "Logging in...");
-		FirebaseManager.getFbAuth().createUserWithEmailAndPassword(email, password)
+		FirebaseManager.getFbAuth().signInWithEmailAndPassword(email, password)
 			.addOnCompleteListener(FirebaseManager.getAuthCompleteListener(this));
 	}
 
 	@Override
 	public void registerBtnClicked(String email, String password) {
 		// Register to firebase with creds
-		AppUtils.showProgress(this, "Please wait", "Logging in...");
+		AppUtils.showProgress(this, "Please wait", "Registering...");
 		FirebaseManager.getFbAuth().createUserWithEmailAndPassword(email, password)
 			.addOnCompleteListener(FirebaseManager.getAuthCompleteListener(this));
 	}

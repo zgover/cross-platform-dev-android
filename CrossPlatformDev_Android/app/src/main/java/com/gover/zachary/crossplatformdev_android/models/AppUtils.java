@@ -28,6 +28,7 @@ public class AppUtils {
 
 		progress.setTitle(defTitle);
 		progress.setMessage(defMsg);
+		progress.show();
 	}
 
 	public static void dismissProgress() {

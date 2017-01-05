@@ -14,7 +14,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.gover.zachary.crossplatformdev_android.LoginRegisterActivity;
 import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterAuthListener;
 
@@ -24,12 +26,14 @@ public class FirebaseManager {
 
 	private static FirebaseAuth fbAuth;
 	private static FirebaseDatabase fbDatabase;
+	private static DatabaseReference fbDbReference;
 
 	public static FirebaseAuth getFbAuth() {
 		// Return and/or create the auth instance
 		if (fbAuth == null) {
 			fbAuth = FirebaseAuth.getInstance();
 		}
+
 		return fbAuth;
 	}
 
@@ -39,7 +43,33 @@ public class FirebaseManager {
 			fbDatabase = FirebaseDatabase.getInstance();
 			fbDatabase.setPersistenceEnabled(true);
 		}
+
 		return fbDatabase;
+	}
+
+	public static DatabaseReference getFbDbReference() {
+		// Return and/or create the database reference
+		if (fbDbReference == null) {
+			fbDbReference = getFbDatabase().getReference();
+		}
+
+		return fbDbReference;
+	}
+
+	public static Query getUserTasksQuery() {
+		// Build query to fetch only the current users tasks
+		Query tasks = getFbDbReference().child(getUserId())
+			.child(com.gover.zachary.crossplatformdev_android.models.Task.OBJECT_NAME)
+			.orderByChild("createdDate");
+
+		return tasks;
+	}
+
+	public static void deleteTask(String key) {
+		getFbDbReference().child(getUserId())
+			.child(com.gover.zachary.crossplatformdev_android.models.Task.OBJECT_NAME)
+			.child(key)
+			.removeValue();
 	}
 
 	public static String getUserId() {

@@ -7,4 +7,11 @@
 	<string name="password_hint">Password</string>
 	<string name="login_btn">Login</string>
 	<string name="register_btn">Register</string>
+
+	<!-- TaskListActivity -->
+	<string name="new_task">New Task</string>
+	<string name="logout">Logout</string>
+	<string name="task_name">Task Name</string>
+	<string name="task_amount">Task Amount</string>
+	<string name="task_created_date">11/11</string>
 </resources>
