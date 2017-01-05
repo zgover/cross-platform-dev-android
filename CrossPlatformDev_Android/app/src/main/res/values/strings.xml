@@ -1,3 +1,10 @@
 <resources>
-	<string name="app_name">CrossPlatformDev_Android</string>
+	<!-- Global -->
+	<string name="app_name">Cross Platform Dev</string>
+
+	<!-- LoginRegisterActivity -->
+	<string name="email_hint">Email</string>
+	<string name="password_hint">Password</string>
+	<string name="login_btn">Login</string>
+	<string name="register_btn">Register</string>
 </resources>
