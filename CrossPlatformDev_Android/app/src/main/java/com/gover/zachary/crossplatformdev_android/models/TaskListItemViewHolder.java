@@ -27,7 +27,7 @@ public class TaskListItemViewHolder extends RecyclerView.ViewHolder {
 	public void bindToPost(Task task) {
 		// Bind the task to the elements
 		taskName.setText(task.getName());
-		taskAmount.setText(task.getAmount());
+		taskAmount.setText(Integer.toString(task.getAmount()));
 		taskCreatedDate.setText(task.getShortCreatedDate());
 	}
 

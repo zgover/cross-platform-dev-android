@@ -27,7 +27,7 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 		setContentView(R.layout.activity_container);
 
 		// Setup default properties
-		//setupFragment();
+		setupFragment();
 	}
 
 	@Override

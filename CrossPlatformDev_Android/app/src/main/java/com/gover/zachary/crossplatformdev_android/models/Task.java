@@ -55,8 +55,9 @@ public class Task implements Serializable {
 
 	@Exclude
 	public String getShortCreatedDate() {
-		if (createdDate == null || createdDate == 0) { return null; }
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/yy", Locale.US);
+		System.out.println(createdDate);
+		System.out.println(sdf.format(createdDate));
 		return sdf.format(createdDate);
 	}
 

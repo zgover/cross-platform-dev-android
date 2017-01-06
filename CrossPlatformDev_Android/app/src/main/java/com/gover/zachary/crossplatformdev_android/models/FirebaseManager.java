@@ -108,7 +108,7 @@ public class FirebaseManager {
 
 		childUpdates.put(location + "/name", task.getName());
 		childUpdates.put(location + "/amount", task.getAmount());
-		childUpdates.put(location + "/createDate", task.getCreatedDate());
+		childUpdates.put(location + "/createdDate", task.getCreatedDate());
 
 		// Update the children of the reference
 		getFbDbReference()
