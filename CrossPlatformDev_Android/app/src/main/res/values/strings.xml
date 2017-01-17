@@ -18,5 +18,7 @@
 
 	<!-- CreateTaskActivity -->
 	<string name="task_created_date_lbl">Created Date</string>
+	<string name="task_name_placeholder">Buy Paper Towels</string>
+	<string name="task_amount_placeholder">101</string>
 
 </resources>

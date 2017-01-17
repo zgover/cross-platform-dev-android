@@ -25,6 +25,7 @@
 			android:textAppearance="@style/TextField"
 			android:padding="6dp"
 			android:lines="1"
+			android:hint="@string/task_name_placeholder"
 			android:background="@drawable/list_item_border"/>
 
 		<TextView
@@ -43,6 +44,7 @@
 			android:maxLength="9"
 			android:lines="1"
 			android:padding="6dp"
+			android:hint="@string/task_amount_placeholder"
 			android:background="@drawable/list_item_border"/>
 
 		<Button
