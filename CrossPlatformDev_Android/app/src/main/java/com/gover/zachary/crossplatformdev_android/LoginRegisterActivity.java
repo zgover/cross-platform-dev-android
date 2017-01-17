@@ -13,6 +13,7 @@ import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterAuthLi
 import com.gover.zachary.crossplatformdev_android.interfaces.LoginRegisterBtnListeners;
 import com.gover.zachary.crossplatformdev_android.models.AppUtils;
 import com.gover.zachary.crossplatformdev_android.models.FirebaseManager;
+import com.gover.zachary.crossplatformdev_android.models.Network;
 
 public class LoginRegisterActivity extends AppCompatActivity implements LoginRegisterBtnListeners,
 																		LoginRegisterAuthListeners {
@@ -25,6 +26,11 @@ public class LoginRegisterActivity extends AppCompatActivity implements LoginReg
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_container);
+
+		// Verify network state and notify the user
+		if (!Network.isOnline(this)) {
+			AppUtils.showToast(this, "Invalid Network Connection", false);
+		}
 
 		// Setup default properties
 		setupFragment();

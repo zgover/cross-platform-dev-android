@@ -13,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.gover.zachary.crossplatformdev_android.fragments.TaskListFragment;
 import com.gover.zachary.crossplatformdev_android.interfaces.TaskListItemListeners;
+import com.gover.zachary.crossplatformdev_android.models.AppUtils;
 import com.gover.zachary.crossplatformdev_android.models.FirebaseManager;
+import com.gover.zachary.crossplatformdev_android.models.Network;
 import com.gover.zachary.crossplatformdev_android.models.Task;
 
 public class TaskListActivity extends AppCompatActivity implements TaskListItemListeners {
@@ -25,6 +27,11 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_container);
+
+		// Verify network state and notify the user
+		if (!Network.isOnline(this)) {
+			AppUtils.showToast(this, "Invalid Network Connection", false);
+		}
 
 		// Setup default properties
 		setupFragment();
@@ -42,6 +49,9 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 		switch(item.getItemId()) {
 			case R.id.AddNewTaskBtn:
 				addNewTask();
+				break;
+			case R.id.RegisterBtn:
+				refreshList();
 				break;
 			case R.id.LogoutBtn:
 				FirebaseManager.logout(this);
@@ -73,6 +83,13 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 
 	@Override
 	public void listItemLongClick(final String key) {
+		// Verify network state and notify the user
+		if (!Network.isOnline(this)) {
+			AppUtils.showToast(this, "Invalid Network Connection", true);
+			return;
+		}
+
+		// Build confirmation to verify deletion
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 		builder.setTitle("Are you sure?");
@@ -84,6 +101,10 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 				FirebaseManager.deleteTask(key);
 			}
 		}).show();
+	}
+
+	private void refreshList() {
+		setupFragment();
 	}
 
 	private void setupFragment() {

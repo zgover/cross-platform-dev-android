@@ -22,6 +22,11 @@ public class CreateTaskActivity extends AppCompatActivity implements CreateTaskL
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_container);
 
+		// Verify network state and notify the user
+		if (!Network.isOnline(this)) {
+			AppUtils.showToast(this, "Invalid Network Connection", true);
+		}
+
 		// Setup default properties
 		setupFragment();
 	}
@@ -30,7 +35,7 @@ public class CreateTaskActivity extends AppCompatActivity implements CreateTaskL
 	public void createNewTask(Task task) {
 		// Verify network state and create new the new task
 		if (!Network.isOnline(this)) {
-			AppUtils.showToast(this, "Invalid Network Connect", true);
+			AppUtils.showToast(this, "Invalid Network Connection", true);
 			return;
 		}
 

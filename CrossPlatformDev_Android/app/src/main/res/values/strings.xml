@@ -12,6 +12,7 @@
 	<!-- TaskListActivity -->
 	<string name="new_task">New Task</string>
 	<string name="logout">Logout</string>
+	<string name="refresh">Refresh</string>
 	<string name="task_name">Task Name</string>
 	<string name="task_amount">Task Amount</string>
 	<string name="task_created_date">11/11</string>
