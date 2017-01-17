@@ -22,6 +22,7 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 
 	private static final String TAG = "TaskListActivity";
 	private static final int CREATE_TASK = 1;
+	private static final int EDIT_TASK = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +78,14 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 	}
 
 	@Override
-	public void listItemClick(Task task) {
+	public void listItemClick(Task task, String key) {
+		// Open the edit activity and pass the task
+		Intent intent = new Intent(this, EditTaskActivity.class);
 
+		intent.putExtra(Task.TAG, task);
+		intent.putExtra(Task.KEY, key);
+
+		startActivityForResult(intent, EDIT_TASK);
 	}
 
 	@Override

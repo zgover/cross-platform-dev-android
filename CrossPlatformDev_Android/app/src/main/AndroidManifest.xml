@@ -35,6 +35,10 @@
 			android:name=".CreateTaskActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize"/>
 
+		<activity
+			android:name=".EditTaskActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"/>
+
 	</application>
 
 </manifest>

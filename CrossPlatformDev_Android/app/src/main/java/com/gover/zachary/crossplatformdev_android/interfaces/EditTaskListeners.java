@@ -1,14 +1,13 @@
 // Zachary Gover
 // CPMD - 1701
-// TaskListItemListeners
+// EditTaskListeners
 
 package com.gover.zachary.crossplatformdev_android.interfaces;
 
 import com.gover.zachary.crossplatformdev_android.models.Task;
 
-public interface TaskListItemListeners {
+public interface EditTaskListeners {
 
-	void listItemClick(Task task, String key);
-	void listItemLongClick(String key);
+	void saveTask(Task task);
 
 }

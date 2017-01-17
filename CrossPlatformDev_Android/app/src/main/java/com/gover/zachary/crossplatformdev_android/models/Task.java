@@ -21,6 +21,9 @@ public class Task implements Serializable {
 	@Exclude
 	public static final String OBJECT_NAME = "tasks";
 
+	@Exclude
+	private String key;
+
 	private String name;
 	private int amount;
 	private Long createdDate;
@@ -31,6 +34,14 @@ public class Task implements Serializable {
 		this.name = name;
 		this.amount = amount;
 		this.createdDate = createdDate;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 	public String getName() {
@@ -56,8 +67,6 @@ public class Task implements Serializable {
 	@Exclude
 	public String getShortCreatedDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/yy", Locale.US);
-		System.out.println(createdDate);
-		System.out.println(sdf.format(createdDate));
 		return sdf.format(createdDate);
 	}
 

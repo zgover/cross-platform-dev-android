@@ -77,6 +77,25 @@ public class FirebaseManager {
 			.removeValue();
 	}
 
+	public static void saveTask(com.gover.zachary.crossplatformdev_android.models.Task task,
+								String key, OnFailureListener onFail, OnSuccessListener onSuccess) {
+		Map<String, Object> childUpdates = new HashMap<>();
+		String location = "/" +
+						  getUserId() + "/" +
+						  com.gover.zachary.crossplatformdev_android.models.Task.OBJECT_NAME + "/" +
+						  key;
+
+		childUpdates.put(location + "/name", task.getName());
+		childUpdates.put(location + "/amount", task.getAmount());
+		childUpdates.put(location + "/createdDate", task.getCreatedDate());
+
+		// Update the children of the reference
+		getFbDbReference()
+			.updateChildren(childUpdates)
+			.addOnFailureListener(onFail)
+			.addOnSuccessListener(onSuccess);
+	}
+
 	public static String getUserId() {
 		return getFbAuth().getCurrentUser().getUid();
 	}

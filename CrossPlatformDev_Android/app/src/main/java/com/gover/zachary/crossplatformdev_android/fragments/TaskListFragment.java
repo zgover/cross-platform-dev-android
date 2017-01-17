@@ -78,7 +78,7 @@ public class TaskListFragment extends Fragment {
 						Log.d(TAG, "onActivityCreated:FirebaseRecyclerAdapter:OnClickListener:" + task);
 
 						if (listener != null) {
-							listener.listItemClick(task);
+							listener.listItemClick(task, key);
 						}
 					}
 				});
