@@ -51,7 +51,7 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 			case R.id.AddNewTaskBtn:
 				addNewTask();
 				break;
-			case R.id.RegisterBtn:
+			case R.id.RefreshBtn:
 				refreshList();
 				break;
 			case R.id.LogoutBtn:
@@ -111,6 +111,12 @@ public class TaskListActivity extends AppCompatActivity implements TaskListItemL
 	}
 
 	private void refreshList() {
+		// Verify network state and notify the user
+		if (!Network.isOnline(this)) {
+			AppUtils.showToast(this, "Invalid Network Connection", false);
+			return;
+		}
+
 		setupFragment();
 	}
 

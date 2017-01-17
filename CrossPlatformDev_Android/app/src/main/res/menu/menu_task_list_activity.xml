@@ -10,13 +10,13 @@
 		app:showAsAction="ifRoom|collapseActionView"/>
 
 	<item
-		android:id="@+id/LogoutBtn"
-		android:title="@string/logout"
+		android:id="@+id/RefreshBtn"
+		android:title="@string/refresh"
 		app:showAsAction="never"/>
 
 	<item
-		android:id="@+id/RefreshBtn"
-		android:title="@string/refresh"
+		android:id="@+id/LogoutBtn"
+		android:title="@string/logout"
 		app:showAsAction="never"/>
 
 </menu>
