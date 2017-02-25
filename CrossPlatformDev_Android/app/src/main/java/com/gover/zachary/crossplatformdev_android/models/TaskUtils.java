@@ -16,7 +16,7 @@ public class TaskUtils {
 		// Validate empties and via regex pattern for only numbers and letters
 		if (name == null || name.trim().isEmpty()) {
 			msg = "Please enter a correct value";
-		} else if (name.trim().matches("^\\d*$")) {
+		} else if (!name.trim().matches("^[a-zA-Z0-9_.-]*$")) {
 			msg = "Please enter only numbers and letters";
 		}
 

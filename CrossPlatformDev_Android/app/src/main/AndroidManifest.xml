@@ -15,7 +15,6 @@
 		<activity
 			android:name=".LoginRegisterActivity"
 			android:launchMode="singleInstance"
-			android:excludeFromRecents="true"
 			android:windowSoftInputMode="stateAlwaysHidden"
 			android:screenOrientation="portrait"
 			android:configChanges="keyboardHidden|orientation|screenSize">
